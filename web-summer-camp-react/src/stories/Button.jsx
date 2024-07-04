@@ -5,15 +5,17 @@ import './button.css';
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+export const Button = ({ type, size, label, icon, iconPosition, disabled, ...props }) => {
+  const hasIcon = icon ? 'storybook-button--icon' : '';
+  const isDisabled = disabled ? 'storybook-button--disabled' : '';
   return (
     <button
       type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-      style={backgroundColor && { backgroundColor }}
+      className={['storybook-button', `storybook-button--${size}`, `storybook-button--${type}`, hasIcon, isDisabled, `storybook-button--${iconPosition}`].join(' ')}
       {...props}
+      disabled={disabled}
     >
+      {icon && <i className={icon}></i>}
       {label}
     </button>
   );
@@ -23,11 +25,7 @@ Button.propTypes = {
   /**
    * Is this the principal call to action on the page?
    */
-  primary: PropTypes.bool,
-  /**
-   * What background color to use
-   */
-  backgroundColor: PropTypes.string,
+  type: PropTypes.oneOf(['Primary', 'Secondary', 'Ghost', 'Tertiary', 'Danger']),
   /**
    * How large should the button be?
    */
@@ -40,11 +38,27 @@ Button.propTypes = {
    * Optional click handler
    */
   onClick: PropTypes.func,
+  /**
+  * Optional icon
+  */
+  icon: PropTypes.string,
+
+  /**
+  * Optional icon position
+  */
+  iconPosition: PropTypes.oneOf(['left', 'right',]),
+  /**
+ * Optional disabled
+ */
+  disabled: PropTypes.bool
 };
 
 Button.defaultProps = {
-  backgroundColor: null,
-  primary: false,
-  size: 'medium',
+  type: 'Primary',
+  size: 'large',
   onClick: undefined,
+  label: 'Button',
+  icon: 'bi bi-plus-lg',
+  iconPosition: 'left',
+  disabled: false
 };

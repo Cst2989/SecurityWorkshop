@@ -12,9 +12,6 @@ export default {
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
   args: { onClick: fn() },
 };
@@ -22,17 +19,54 @@ export default {
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary = {
   args: {
-    primary: true,
+    type: 'Primary',
     label: 'Button',
   },
 };
 
 export const Secondary = {
   args: {
+    type: 'Secondary',
     label: 'Button',
   },
 };
 
+export const Tertiary = {
+  args: {
+    type: 'Tertiary',
+    label: 'Button',
+  },
+};
+
+export const Ghost = {
+  args: {
+    type: 'Ghost',
+    label: 'Button',
+  },
+};
+
+export const Danger = {
+  args: {
+    type: 'Danger',
+    label: 'Button',
+  },
+};
+
+
+
+export const Small = {
+  args: {
+    size: 'small',
+    label: 'Button',
+  },
+};
+
+export const Medium = {
+  args: {
+    size: 'medium',
+    label: 'Button',
+  },
+};
 export const Large = {
   args: {
     size: 'large',
@@ -40,9 +74,18 @@ export const Large = {
   },
 };
 
-export const Small = {
+export const Disabled = {
   args: {
-    size: 'small',
+    size: 'large',
     label: 'Button',
+    disabled: true,
+  },
+};
+
+export const IconRight = {
+  args: {
+    size: 'large',
+    label: 'Button',
+    iconPosition: 'right',
   },
 };
