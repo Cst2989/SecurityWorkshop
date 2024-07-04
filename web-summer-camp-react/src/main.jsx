@@ -1,10 +1,34 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+import RedeemPromo from './features/promo-codes'
+import SocialFeed from './features/social-feed'
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 import './index.css'
+import RedeemPromoInt from './features/promo-codes-international';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <div>Hello world!</div>,
+  },
+  {
+    path: "/promo",
+    element: <RedeemPromo/>,
+  },
+  {
+    path: "/promo-int",
+    element: <RedeemPromoInt/>,
+  },
+  {
+    path: "/social",
+    element: <SocialFeed/>,
+  },
+]);
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
