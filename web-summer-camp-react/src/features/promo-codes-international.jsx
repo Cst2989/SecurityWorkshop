@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation, I18nextProvider } from 'react-i18next';
-import i18n from '../utils/i18n';
+import i18n from '../util/i18n';
 
 const RedeemPromoContent = () => {
   const { location } = window;
