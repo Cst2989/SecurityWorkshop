@@ -1,3 +1,22 @@
+/**
+ * Remove focus styles for non-keyboard focus.
+ */
+:focus:not(:focus-visible) {
+  outline: 0;
+  box-shadow: none;
+}
+
+/**
+ * Cross-browser styles for explicit focus via 
+ * keyboard-based (eg Tab) navigation or the
+ * .focus-visible utility class.
+ */
+:focus,
+.focus-visible:focus:not(:focus-visible) {
+  outline: 4px solid var(--Secondary-A600, #42A3A3);
+  border: 1px solid #fff;
+}
+
 .storybook-button {
   font-family: 'Inter';
   font-weight: 500;
@@ -26,16 +45,15 @@
   background: var(--Button-Primary-Default, #6E2DD7);
 }
 
-.storybook-button:focus{
-  outline: 4px solid var(--Secondary-A600, #42A3A3);
-  border: 1px solid #fff;
-}
+
 
 .storybook-button--Primary:hover {
   background: var(--Button-Primary-Hover, #5322A1);
 }
 
-.storybook-button--Primary:active {
+/* Increased specificity for active state */
+.storybook-button--Primary:active,
+.storybook-button--Primary.storybook-button:focus:active {
   background: var(--Button-Primary-Active, #311461);
 }
 

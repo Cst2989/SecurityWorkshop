@@ -22,12 +22,26 @@ export const Primary = {
     type: 'Primary',
     label: 'Button',
   },
+  parameters: {
+    docs: {
+      description: {
+        story: 'For the principal action on the page. It’s recommended that primary buttons only appear once per screen (not including modals or dialogs).',
+      },
+    },
+  },
 };
 
 export const Secondary = {
   args: {
     type: 'Secondary',
     label: 'Button',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'For secondary actions on each page. Secondary buttons are recommended to be used in conjunction with a primary button.',
+      },
+    },
   },
 };
 
@@ -36,12 +50,26 @@ export const Tertiary = {
     type: 'Tertiary',
     label: 'Button',
   },
+  parameters: {
+    docs: {
+      description: {
+        story: 'For actions that are less important. Eg: Edit, Back, Cancel',
+      },
+    },
+  },
 };
 
 export const Ghost = {
   args: {
     type: 'Ghost',
     label: 'Button',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Ghost buttons can also accompany Primary and Secondary buttons for actions. The difference between ghost and link is the padding and the the states',
+      },
+    },
   },
 };
 
@@ -50,29 +78,16 @@ export const Danger = {
     type: 'Danger',
     label: 'Button',
   },
-};
-
-
-
-export const Small = {
-  args: {
-    size: 'small',
-    label: 'Button',
+  parameters: {
+    docs: {
+      description: {
+        story: 'For actions that have destructive effects on the user’s data: Eg: Delete, Remove, Cancel and lose important information',
+      },
+    },
   },
 };
 
-export const Medium = {
-  args: {
-    size: 'medium',
-    label: 'Button',
-  },
-};
-export const Large = {
-  args: {
-    size: 'large',
-    label: 'Button',
-  },
-};
+
 
 export const Disabled = {
   args: {

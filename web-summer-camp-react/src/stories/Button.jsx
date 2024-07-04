@@ -17,6 +17,7 @@ export const Button = ({ type, size, label, icon, iconPosition, disabled, ...pro
     >
       {icon && <i className={icon}></i>}
       {label}
+      {icon && <i className={icon}></i>}
     </button>
   );
 };
