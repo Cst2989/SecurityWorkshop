@@ -40,8 +40,6 @@ export class ArticleComponent implements OnInit {
   </figure>
   <p><em>Conclusion:</em> While Angular provides tools to help secure your application, understanding and properly implementing security measures is essential for every developer to prevent XSS and other vulnerabilities.</p>
 `;
-
-
     // Sanitize the fetched content
     this.articleContent = this.sanitizer.bypassSecurityTrustHtml(fetchedHtmlContent);
 

@@ -1,24 +1,42 @@
 import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
 
 document.querySelector('#app').innerHTML = `
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
+  
+    <div>
+      <h2>Enter Text to Render</h2>
+      <input type="text" id="userInput" placeholder="Enter some text" />
+      <button id="renderButton">Render</button>
+      <div id="output"></div>
     </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
   </div>
 `
 
-setupCounter(document.querySelector('#counter'))
+
+document.getElementById('renderButton').addEventListener('click', () => {
+  const userInput = document.getElementById('userInput').value;
+  const output = document.getElementById('output');
+
+  // Remove any existing content
+  output.innerHTML = '';
+
+  // Create a new script element if input contains <script>
+  if (userInput.includes('<script>')) {
+    const scriptContent = userInput.match(/<script>([\s\S]*?)<\/script>/)[1];
+    const scriptElement = document.createElement('script');
+    scriptElement.textContent = scriptContent;
+    output.appendChild(scriptElement);
+  }
+
+  // Create a new image element if input contains <img>
+  if (userInput.includes('<img')) {
+    const imgContent = userInput.match(/<img[^>]*>/)[0];
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = imgContent;
+    const imgElement = tempDiv.firstChild;
+    output.appendChild(imgElement);
+  }
+
+  // Render other HTML content
+  output.insertAdjacentHTML('beforeend', userInput.replace(/<script>[\s\S]*?<\/script>/, '').replace(/<img[^>]*>/, ''));
+});
