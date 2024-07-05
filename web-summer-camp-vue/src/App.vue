@@ -6,6 +6,7 @@
     <nav>
       <RouterLink to="/codes">Go to Access Codes</RouterLink>
       <RouterLink to="/reviews">Go to Reviews</RouterLink>
+      <RouterLink to="/threads">Go to Threads</RouterLink>
     </nav>
   <main>
     <RouterView />

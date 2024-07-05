@@ -18,7 +18,6 @@
 
 <script>
 import ReviewComponent from './Review.vue';
-
 const ReviewListComponent = {
   components: {
     ReviewComponent

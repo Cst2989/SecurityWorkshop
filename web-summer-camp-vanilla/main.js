@@ -1,3 +1,4 @@
+import DOMPurify from 'dompurify';
 import './style.css'
 
 document.querySelector('#app').innerHTML = `
@@ -8,10 +9,6 @@ document.querySelector('#app').innerHTML = `
       <input type="text" id="userInput" placeholder="Enter some text" />
       <button id="renderButton">Render</button>
       <div id="output"></div>
-    </div>
-     <div>
-      <h2>Promo Content from URL</h2>
-      <div id="promoOutput"></div>
     </div>
   </div>
 `
@@ -52,27 +49,8 @@ if (promoContent) {
 document.getElementById('renderButton').addEventListener('click', () => {
   const userInput = document.getElementById('userInput').value;
   const output = document.getElementById('output');
-
   // Remove any existing content
-  output.innerHTML = '';
-
-  // Create a new script element if input contains <script>
-  if (userInput.includes('<script>')) {
-    const scriptContent = userInput.match(/<script>([\s\S]*?)<\/script>/)[1];
-    const scriptElement = document.createElement('script');
-    scriptElement.textContent = scriptContent;
-    output.appendChild(scriptElement);
-  }
-
-  // Create a new image element if input contains <img>
-  if (userInput.includes('<img')) {
-    const imgContent = userInput.match(/<img[^>]*>/)[0];
-    const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = imgContent;
-    const imgElement = tempDiv.firstChild;
-    output.appendChild(imgElement);
-  }
-
+  output.innerHTML = DOMPurify.sanitize(userInput);
   // Render other HTML content
   output.insertAdjacentHTML('beforeend', userInput.replace(/<script>[\s\S]*?<\/script>/, '').replace(/<img[^>]*>/, ''));
 });
