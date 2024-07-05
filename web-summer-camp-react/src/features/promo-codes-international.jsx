@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation, I18nextProvider } from 'react-i18next';
 import i18n from '../util/i18n';
-
+import Dompurify from 'dompurify';
 const RedeemPromoContent = () => {
   const { location } = window;
   const [promoCode, setPromoCode] = useState('');
@@ -18,7 +18,9 @@ const RedeemPromoContent = () => {
     const promo = query.get('promo');
     if (promo) {
       // Naively setting the promo code from URL parameter without validation
-      setPromoCode(promo);
+      setPromoCode(Dompurify.sanitize(promo, {
+        ALLOWED_TAGS: ['strong'],
+      }));
     }
   }, [location]);
 

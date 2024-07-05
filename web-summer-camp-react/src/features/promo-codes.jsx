@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import DOMPurify from 'dompurify';
 const RedeemPromo = () => {
   const { location } = window;
   const [promoCode, setPromoCode] = useState('');
@@ -15,7 +16,9 @@ const RedeemPromo = () => {
   return (
     <div className='app-container'>
       <h1>Redeem Your Promo Code</h1>
-      {promoCode ? <p>Applying promo code: <strong dangerouslySetInnerHTML={{ __html: promoCode}}/></p> : <p>No Promo code</p>} 
+      {promoCode ? <p>Applying promo code: <strong dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(promoCode, {
+        ALLOWED_TAGS: ['strong'],
+      })}}></strong></p> : <p>No Promo code</p>} 
     </div>
   );
 };

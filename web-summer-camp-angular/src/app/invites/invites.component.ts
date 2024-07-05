@@ -23,7 +23,9 @@ export class InviteComponent implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.invitationCode = params['inviteCode'] || '';
-      this.sanitizedInvitationCode = this.invitationCode
+      if(this.invitationCode) {
+        this.sanitizedInvitationCode = this.sanitizer.sanitize(4, this.invitationCode) as SafeHtml
+      }
     });
   }
 }

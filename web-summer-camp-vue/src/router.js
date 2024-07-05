@@ -5,6 +5,7 @@ import ReviewListComponent  from './features/reviews/ReviewListComponent.vue'
 import ThreadListComponent  from './features/threads/ThreadListComponent.vue'
 
 const routes = [
+  {path: '/', component: AccessCode},
   { path: '/reviews', component: ReviewListComponent },
   { path: '/codes', component: AccessCode },
   { path: '/threads', component: ThreadListComponent },

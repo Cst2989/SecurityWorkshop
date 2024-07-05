@@ -9,6 +9,8 @@ document.querySelector('#app').innerHTML = `
       <input type="text" id="userInput" placeholder="Enter some text" />
       <button id="renderButton">Render</button>
       <div id="output"></div>
+      <h2>Enter Promo Content</h2>
+      <div id="promoOutput"></div>
     </div>
   </div>
 `
@@ -23,27 +25,11 @@ if (promoContent) {
   const promoOutput = document.getElementById('promoOutput');
 
   // Remove any existing content
-  promoOutput.innerHTML = '';
+  promoOutput.innerHTML = DOMPurify.sanitize(promoContent, {
+    ALLOWED_TAGS: [],
+  
+  });
 
-  // Create a new script element if input contains <script>
-  if (promoContent.includes('<script>')) {
-    const scriptContent = promoContent.match(/<script>([\s\S]*?)<\/script>/)[1];
-    const scriptElement = document.createElement('script');
-    scriptElement.textContent = scriptContent;
-    promoOutput.appendChild(scriptElement);
-  }
-
-  // Create a new image element if input contains <img>
-  if (promoContent.includes('<img')) {
-    const imgContent = promoContent.match(/<img[^>]*>/)[0];
-    const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = imgContent;
-    const imgElement = tempDiv.firstChild;
-    promoOutput.appendChild(imgElement);
-  }
-
-  // Render other HTML content
-  promoOutput.insertAdjacentHTML('beforeend', promoContent.replace(/<script>[\s\S]*?<\/script>/, '').replace(/<img[^>]*>/, ''));
 }
 
 document.getElementById('renderButton').addEventListener('click', () => {

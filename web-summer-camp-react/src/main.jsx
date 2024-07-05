@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import './index.css'
 import RedeemPromoInt from './features/promo-codes-international';
+import DashboardComponents from './features/dashboards';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/social",
     element: <SocialFeed/>,
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardComponents/>,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
