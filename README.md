@@ -1,4 +1,4 @@
-# WebSummerCamp
+# Security Workshop
 
 This repository contains four different projects built with different frameworks and tools. Below are the instructions to install and run each project.
 
