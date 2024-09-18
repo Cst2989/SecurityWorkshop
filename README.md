@@ -22,7 +22,7 @@ This repository contains four different projects built with different frameworks
 
 1. Navigate to the Vue project directory:
     ```bash
-    cd web-summer-camp-vue
+    cd workshop-vue
     ```
 
 2. Install the dependencies:
@@ -45,7 +45,7 @@ This repository contains four different projects built with different frameworks
 
 1. Navigate to the React project directory:
     ```bash
-    cd web-summer-camp-react
+    cd workshop-react
     ```
 
 2. Install the dependencies:
@@ -68,7 +68,7 @@ This repository contains four different projects built with different frameworks
 
 1. Navigate to the Vanilla JavaScript project directory:
     ```bash
-    cd web-summer-camp-vanilla
+    cd workshop-vanilla
     ```
 
 2. Install the dependencies:
@@ -96,7 +96,7 @@ This repository contains four different projects built with different frameworks
 
 2. Navigate to the Angular project directory:
     ```bash
-    cd web-summer-camp-angular
+    cd workshop-angular
     ```
 
 3. Install the dependencies:
