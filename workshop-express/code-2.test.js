@@ -66,6 +66,3 @@ describe('POST /ufo', () => {
   });
 });
 
-after(() => {
-  app.close();
-});

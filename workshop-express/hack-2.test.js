@@ -122,6 +122,3 @@ describe("Security tests", () => {
   });
 });
 
-after(() => {
-  app.close();
-});
