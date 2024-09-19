@@ -10,8 +10,8 @@
 // $ npm install  && npm install --global mocha
 // $ mocha hack.test.js
 
-const app = require("./code");
-// const app = require("./solution"); // To test the solution, uncomment this line and comment the one above
+//const app = require("./code");
+const app = require("./solution"); // To test the solution, uncomment this line and comment the one above
 const request = require("supertest");
 const { expect } = require("chai");
 
