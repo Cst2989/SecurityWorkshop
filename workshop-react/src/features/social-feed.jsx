@@ -1,5 +1,4 @@
 import  { useState, useRef } from 'react';
-import DOMPurify from 'dompurify';
 import "./styles.css"
 const usersData = [
   { id: 1, name: 'Dan', bio: 'Enthusiastic about <b>technology</b> and <i>innovation</i>.<img src="invalid-image" onerror="alert(`XSS Attack!`)" />' },
@@ -53,7 +52,7 @@ const SocialFeed = () => {
           ref={textAreaRef}
           className="text-area"
           onInput={(e) => setBio(e.currentTarget.innerHTML)}
-          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bio) }}
+          dangerouslySetInnerHTML={{ __html: bio }}
         ></div>
         <button onClick={updateBio} style={{ marginTop: '10px' }}>Update Bio</button>
       </div>
@@ -64,7 +63,7 @@ const SocialFeed = () => {
         {users.map(user => (
           <div key={user.id} className="user-profile">
             <h3>{user.name}</h3>
-            <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(user.bio) }} />
+            <p dangerouslySetInnerHTML={{ __html: user.bio }} />
           </div>
         ))}
       </div>
