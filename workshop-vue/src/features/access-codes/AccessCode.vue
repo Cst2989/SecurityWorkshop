@@ -7,7 +7,6 @@
 
 <script>
 import { ref, onMounted } from 'vue';
-import Dompurify from 'dompurify';
 const AccessCode =  {
   setup() {
     const accessCode = ref('');
@@ -16,9 +15,7 @@ const AccessCode =  {
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get('code');
       if (code) {
-        accessCode.value = Dompurify.sanitize(code, {
-          ALLOWED_TAGS: [],
-        });
+        accessCode.value = code
       }
     });
 

@@ -1,6 +1,6 @@
 <template>
   <div class="thread">
-    <div v-html="sanitizedContent"></div>
+    <div v-html="content"></div>
     <textarea v-model="reply" placeholder="Write a reply..."></textarea>
     <button @click="addReply">Reply</button>
     <div class="replies">
@@ -20,15 +20,9 @@ export default {
       replies: [],
     };
   },
-  computed: {
-    sanitizedContent() {
-      return DOMPurify.sanitize(this.content);
-    },
-  },
   methods: {
     addReply() {
-      const sanitizedReply = DOMPurify.sanitize(this.reply);
-      this.replies.push(sanitizedReply);
+      this.replies.push(this.reply);
       this.reply = '';
     },
   },
